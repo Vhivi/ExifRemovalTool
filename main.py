@@ -66,14 +66,15 @@ def view_exif_data(image_path):
     Returns:
         None
     """
-    print("View exif data from image : ", image_path)
+    print("View exif data from image : ", image_path, end="\n\n")
 
     img = Image.open(image_path)
     # Retrieve the EXIF data
     exif_data = img.getexif()
     # Display the EXIF data
-    if exif_data is None:
-        print("No exif data found")
+    # If no EXIF data is found, display a message
+    if len(exif_data) == 0:
+        print("No EXIF data found in the image.")
     else:
         for tag, value in exif_data.items():
             if tag in ExifTags.TAGS:
