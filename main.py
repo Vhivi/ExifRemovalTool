@@ -40,6 +40,7 @@ def remove_exif_data(image_path):
 
     print("Opening image...")
     img = Image.open(image_path)
+    img_extension = image_path.split(".")[-1]
     # Remove the EXIF data
     print("Getting data from image...")
     data = list(img.getdata())
@@ -50,7 +51,7 @@ def remove_exif_data(image_path):
     # Save the image without the EXIF data
     new_image_name = input("Enter the name of the new image without extension: ")
     print("Saving image without exif data...")
-    image_without_exif.save(new_image_name + ".jpg")
+    image_without_exif.save(new_image_name + "." + img_extension)
     image_without_exif.close()
     print("Image saved successfully!")
 
