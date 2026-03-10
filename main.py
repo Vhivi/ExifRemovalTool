@@ -8,8 +8,8 @@
 # of the shot, etc. The script should be able to remove this
 # EXIF data from an image.
 # Author:
-# Creation Date (dd/mm/yyyy): 09/02/2024
-# Version: 1.0.1
+# Creation Date: 2024-02-09
+# Version: 1.0.2
 # Python 3.10.11
 
 ################################################################
