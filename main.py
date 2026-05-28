@@ -9,7 +9,7 @@
 # EXIF data from an image.
 # Author:
 # Creation Date: 2024-02-09
-# Version: 1.0.2
+# Version: 1.0.3
 # Python 3.10.11
 
 ################################################################
