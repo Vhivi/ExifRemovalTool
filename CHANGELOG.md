@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Upgrade Pillow version 12.1.1 to 12.2.0 to remediate CVE-2026-40192.
+- Upgrade Pillow version 12.1.1 to 12.2.0 to remediate CVE-2026-40192 / CVE-2026-42308 / CVE-2026-42309 / CVE-2026-42310 / CVE-2026-42311.
 - Upgrade Pillow badge to 12.2.0 on README.md.
 - Align code header version to 1.0.3 in main.py.
 
