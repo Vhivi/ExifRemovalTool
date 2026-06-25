@@ -1,29 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Project Description: The project aims to provide a script that removes
-# the EXIF data from an image. EXIF data is information stored
-# in image files. This data can contain sensitive information
-# such as the location of the shot, the camera model, the date
-# of the shot, etc. The script should be able to remove this
-# EXIF data from an image.
-# Author:
-# Creation Date: 2024-02-09
-# Version: 1.0.3
-# Python 3.10.11
-
-################################################################
-# Importing modules
-################################################################
-
-import getopt
-import sys
+import argparse
+from pathlib import Path
 
 from PIL import ExifTags, Image
-
-################################################################
-# Function declarations
-################################################################
 
 
 def remove_exif_data(image_path):
