@@ -57,30 +57,20 @@ def remove_exif_data(image_path):
 
 
 def view_exif_data(image_path):
-    """
-    Displays the EXIF data of an image.
-
-    Args:
-        image_path (str): The path to the image.
-
-    Returns:
-        None
-    """
     print("View exif data from image : ", image_path, end="\n\n")
 
-    img = Image.open(image_path)
-    # Retrieve the EXIF data
-    exif_data = img.getexif()
-    # Display the EXIF data
-    # If no EXIF data is found, display a message
+    with Image.open(image_path) as img:
+        exif_data = img.getexif()
+
     if len(exif_data) == 0:
         print("No EXIF data found in the image.")
-    else:
-        for tag, value in exif_data.items():
-            if tag in ExifTags.TAGS:
-                print(f"{ExifTags.TAGS[tag]}: {value}")
-            else:
-                print(f"Tag: {tag}, value: {value}")
+        return
+
+    for tag, value in exif_data.items():
+        if tag in ExifTags.TAGS:
+            print(f"{ExifTags.TAGS[tag]}: {value}")
+        else:
+            print(f"Tag: {tag}, value: {value}")
 
 
 def main():
