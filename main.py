@@ -84,42 +84,20 @@ def view_exif_data(image_path):
 
 
 def main():
-    """
-    This function is the entry point of the ExifRemovalTool program.
-    It parses the command line arguments and performs the corresponding actions based on the provided options.
-    """
-    argumentlist = sys.argv[1:]
+    parser = argparse.ArgumentParser(
+        description="View or remove EXIF data from an image."
+    )
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("-v", "--view", metavar="IMAGE", help="view image EXIF data")
+    group.add_argument(
+        "-r", "--remove", metavar="IMAGE", help="remove image EXIF data"
+    )
+    args = parser.parse_args()
 
-    options = "hv:r:"
-
-    long_options = ["help", "view", "remove"]
-
-    try:
-        arguments, _ = getopt.getopt(argumentlist, options, long_options)
-
-        for currentArgument, currentValue in arguments:
-            # If no argument is passed, display the help message
-            if currentArgument in ("-h", "--help") or len(sys.argv) == 1:
-                print("Help message:", end="\n")
-                print(
-                    "This program is designed to remove EXIF data from an image. It takes the following options:"
-                )
-                print("-h, --help: Display this help message.")
-                print("-v, --view : View the EXIF data of the specified image.")
-                print(
-                    "-r, --remove : Remove the EXIF data from the specified image.",
-                    end="\n\n",
-                )
-                print("Usage: python main.py [options]")
-                print("Example: python main.py -v image.jpg")
-            elif currentArgument in ("-v", "--view"):
-                view_exif_data(currentValue)
-            elif currentArgument in ("-r", "--remove"):
-                remove_exif_data(currentValue)
-    except getopt.GetoptError as err:
-        print(str(err))
-        print("Usage: python main.py [options]")
-        print("Example: python main.py -v image.jpg")
+    if args.view:
+        view_exif_data(args.view)
+    else:
+        remove_exif_data(args.remove)
 
 
 if __name__ == "__main__":
