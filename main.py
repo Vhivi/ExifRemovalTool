@@ -8,32 +8,15 @@ from PIL import ExifTags, Image
 
 
 def remove_exif_data(image_path):
-    """
-    Removes the EXIF data from the given image.
-
-    Args:
-        image_path (str): The path to the image file.
-
-    Returns:
-        None
-    """
     print("Remove exif data from image : ", image_path)
 
-    print("Opening image...")
-    img = Image.open(image_path)
-    img_extension = image_path.split(".")[-1]
-    # Remove the EXIF data
-    print("Getting data from image...")
-    data = list(img.getdata())
-    print("Creating image without exif data...")
-    image_without_exif = Image.new(img.mode, img.size)
-    image_without_exif.putdata(data)
-
-    # Save the image without the EXIF data
     new_image_name = input("Enter the name of the new image without extension: ")
+    output_path = Path(new_image_name).with_suffix(Path(image_path).suffix)
+
     print("Saving image without exif data...")
-    image_without_exif.save(new_image_name + "." + img_extension)
-    image_without_exif.close()
+    with Image.open(image_path) as img:
+        img.save(output_path, exif=b"")
+
     print("Image saved successfully!")
 
 
